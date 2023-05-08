@@ -1,0 +1,4 @@
+/home/anvik/2720/Shapes/shapes/include/Pyramid.h:42: warning: Member radius (variable) of class Pyramid is not documented.
+/home/anvik/2720/Shapes/shapes/include/Pyramid.h:43: warning: Member tube (variable) of class Pyramid is not documented.
+/home/anvik/2720/Shapes/shapes/include/Torus.h:42: warning: Member radius (variable) of class Torus is not documented.
+/home/anvik/2720/Shapes/shapes/include/Torus.h:43: warning: Member tube (variable) of class Torus is not documented.

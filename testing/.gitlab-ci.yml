@@ -1,0 +1,60 @@
+stages:
+   - documentation
+   - quality
+   - build
+   - unit_test
+   - active_tests
+
+variables:
+  GIT_STRATEGY: clone
+  TIMEOUT: 10m
+
+docs:
+   stage: documentation
+   script:
+      - make docs
+   artifacts:
+      paths:
+         - docs/code/src
+
+styleCheck:
+   stage: quality
+   script:
+      - make style
+
+staticAnalysis:
+   stage: quality
+   script:
+      - make static
+
+build-clean:
+   stage: build
+   script:
+      - make testShapes-clean
+   artifacts:
+      paths:
+         - testShapes-clean
+   
+build-bugs:
+   stage: build
+   script:
+      - make testShapes-bugs
+   artifacts:
+      paths:
+         - testShapes-bugs
+   
+test-clean:
+   stage: unit_test
+   script:
+      - testShapes-clean
+   
+test-bugs:
+   stage: unit_test
+   script:
+      - testShapes-bugs
+   allow_failure: true
+   
+memoryLeaks:
+   stage: active_tests
+   script:
+      - make memcheck

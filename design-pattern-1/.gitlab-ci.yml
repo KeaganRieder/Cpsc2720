@@ -1,0 +1,36 @@
+stages:
+   - documentation
+   - quality
+   - build
+   - run
+
+docs:
+   stage: documentation
+   script:
+      - make docs
+   artifacts:
+      paths:
+         - docs
+
+styleCheck:
+   stage: quality
+   script:
+      - make style
+
+staticAnalysis:
+   stage: quality
+   script:
+      - make static
+
+compile:
+   stage: build
+   script:
+      - make compile
+   artifacts:
+      paths:
+         - radio
+         
+execute:
+   stage: run
+   script:
+      - ./radio

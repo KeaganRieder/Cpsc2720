@@ -1,0 +1,30 @@
+stages:
+   - documentation
+   - quality
+   - build
+
+docs:
+   stage: documentation
+   script:
+      - make docs
+   artifacts:
+      paths:
+         - docs
+
+styleCheck:
+   stage: quality
+   script:
+      - make style
+
+staticAnalysis:
+   stage: quality
+   script:
+      - make static
+
+compile:
+   stage: build
+   script:
+      - make compileProject
+   artifacts:
+      paths:
+         - project
